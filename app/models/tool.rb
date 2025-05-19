@@ -8,5 +8,4 @@ class Tool < ApplicationRecord
   validates :condition, presence: true
   validates :rental_price, presence: true
   validates :category, presence: true
-
 end
