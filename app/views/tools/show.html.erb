@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Tool  <%= "#{@tool.name}" %></h1>
   <div class="card-trip">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <%= cl_image_tag @tool.photo.key, height: 300, width: 400, crop: :fill %>
     <div class="card-trip-infos">
       <div class="info-left">
         <p><strong>Condition: </strong><%= @tool.condition.capitalize %></p>
