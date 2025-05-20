@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :tools
   has_many :rentals
+  has_many :rentals_as_owner, through: :tools, source: :rentals
   validates :name, presence: true
   validates :email, presence: true
 end

@@ -1,0 +1,32 @@
+// status card
+.card-status-wrapper {
+  padding: 60px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.card-status {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 750px;
+  // text-align: center;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.card-status-title {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+  font-size: 20px;
+  text-align: center;
+}
+
+// tool card
+.card-body {
+  margin-bottom: 10px;
+}
