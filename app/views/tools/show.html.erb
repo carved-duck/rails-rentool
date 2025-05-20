@@ -2,6 +2,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><%= link_to "Tools", tools_path %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @tool.category %></li>
       <li class="breadcrumb-item active" aria-current="page"><%= @tool.name %></li>
     </ol>
   </nav>
@@ -16,9 +17,6 @@
       </p>
       <p class="mb-2"><strong>Description:</strong>
         <%= @tool.description %>
-      </p>
-      <p class="mb-2"><strong>Category:</strong>
-        <%= @tool.category %>
       </p>
     </div>
     <div class="col-12 col-lg-2">
