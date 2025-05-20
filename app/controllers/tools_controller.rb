@@ -10,7 +10,7 @@ class ToolsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @tool = Tool.new(tool_params)
-    @tool.user = @user
+    @tool.user = current.user
     if tool.save
       redirect_to new_tool_path
     else
