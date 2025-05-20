@@ -1,2 +1,19 @@
-<h1>This is the Tools Index Page</h1>
-<%= link_to "Add a new tool", new_tool_path%>
+<h1>Community Tool Shed</h1>
+<div class="container">
+  <div class="col-2 col-lg-6 m-2">
+    <div class="m-2">
+      <div class="cards">
+        <% @tools.each do |tool| %>
+          <div class="card" style="width: 18rem; height: 220px; border-radius: 16px">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= tool.name %></h5>
+              <p class="card-text"><%= tool.description.truncate(75) %> </p>
+              <a href="#"><%= link_to "See More", tools_path(tool), class: "btn btn-info" %> </a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
