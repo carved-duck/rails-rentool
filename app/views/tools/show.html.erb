@@ -1,1 +1,24 @@
-<h1>This is the Tool Show Page</h1>
+<div class="container">
+  <h1>Tool  <%= "#{@tool.name}" %></h1>
+  <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-trip-infos">
+      <div class="info-left">
+        <p><strong>Condition: </strong><%= @tool.condition.capitalize %></p>
+        <div class="box">
+          <p><strong>Description: </strong><%= @tool.description.truncate(200) %></p>
+        </div>
+        <p><strong>Category: </strong><%= @tool.category %></p>
+      </div>
+      <div class="info-right">
+        <div class="button mt-5 mb-3">
+          <%= link_to "Reserve", "#", class: "btn btn-gradient" %>
+          <%# <%= render "/tools/form", tool: @tool, rental: @rental %>
+        </div>
+        <h2 class="card-trip-pricing"><strong>Price: </strong>¥<%= @tool.rental_price %></h2>
+        <p><strong>Location: </strong><%= @tool.location %></p>
+      </div>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
+  </div>
+</div>
