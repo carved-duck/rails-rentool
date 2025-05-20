@@ -4,13 +4,13 @@
     <div class="m-2">
       <div class="cards my-4">
         <% @tools.each do |tool| %>
-          <div class="card" style="width: 18rem; height: 380px; border-radius: 16px">
+          <div class="card" style="width: 20rem; height: 380px; border-radius: 16px">
             <div class="card-body">
               <div class="image text-center my-2">
                 <%= cl_image_tag tool.photo.key, height: 165, width: 220, crop: :fill %>
               </div>
               <h5 class="card-title"><strong><%= tool.name %></strong></h5>
-              <p class="card-text"><%= tool.description.truncate(75) %> </p>
+              <p class="card-text"><%= tool.description.truncate(65) %> </p>
               <a href="#"><%= link_to "Details", tool_path(tool), class: "btn btn-info" %> </a>
             </div>
           </div>
