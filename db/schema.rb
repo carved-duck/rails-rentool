@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_20_034026) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_20_062410) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,12 +45,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_20_034026) do
   create_table "rentals", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
-    t.string "rental_status"
     t.integer "total_price"
     t.bigint "tool_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
     t.index ["tool_id"], name: "index_rentals_on_tool_id"
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end
@@ -60,11 +60,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_20_034026) do
     t.string "description"
     t.string "condition"
     t.string "location"
-    t.integer "rental_price"
     t.string "category"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
     t.index ["user_id"], name: "index_tools_on_user_id"
   end
 

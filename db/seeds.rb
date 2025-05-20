@@ -69,7 +69,7 @@ User.all.each do |user|
       description: Faker::Lorem.paragraph(sentence_count: 3),
       condition: ["good", "fair", "excellent"].sample,
       location: Faker::Address.city,
-      rental_price: rand(1000..5000),
+      price: rand(1000..5000),
       category: category,
       user: user
     )
@@ -102,7 +102,7 @@ User.all.each do |user|
   Rental.create!(
     start_date: Faker::Date.backward(days: 3),
     end_date: Faker::Date.forward(days: 10),
-    rental_status: "pending",
+    status: "pending",
     total_price: 3000,
     user: user,
     tool: Tool.where.not(user: user).sample
