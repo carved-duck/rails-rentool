@@ -14,11 +14,10 @@ class ToolsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
     @tool = Tool.new(tool_params)
-    @tool.user = current.user
-    if tool.save
-      redirect_to new_tool_path
+    @tool.user = current_user
+    if @tool.save
+      redirect_to tool_path(@tool)
     else
       render "tools/new", status: :unprocessable_entity
     end
