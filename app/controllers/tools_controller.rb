@@ -8,7 +8,7 @@ class ToolsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:restaurant_id])
+    @user = User.find(params[:user_id])
     @tool = Tool.new(tool_params)
     @tool.user = @user
     if tool.save
