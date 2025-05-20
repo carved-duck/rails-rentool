@@ -1,21 +1,35 @@
-<div class="container">
-  <h1>Tool  <%= "#{@tool.name}" %></h1>
-  <div class="card-trip">
-    <%= cl_image_tag @tool.photo.key, height: 300, width: 400, crop: :fill %>
-    <div class="card-trip-infos">
-      <div class="info-left">
-        <p><strong>Condition: </strong><%= @tool.condition.capitalize %></p>
-        <div class="box">
-          <p><strong>Description: </strong><%= @tool.description.truncate(200) %></p>
-        </div>
-        <p><strong>Category: </strong><%= @tool.category %></p>
-      </div>
-      <div class="info-right">
+<div class="container my-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Tools", tools_path %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @tool.name %></li>
+    </ol>
+  </nav>
+  <div class="row g-4">
+    <div class="col-12 col-lg-6">
+      <%= cl_image_tag @tool.photo.key, class: "img-fluid rounded", alt: @tool.name %>
+    </div>
+    <div class="col-12 col-lg-4 d-flex flex-column">
+      <h1><%= @tool.name %></h1>
+      <p class="mb-2"><strong>Condition:</strong>
+        <%= @tool.condition.capitalize %>
+      </p>
+      <p class="mb-2"><strong>Description:</strong>
+        <%= @tool.description %>
+      </p>
+      <p class="mb-2"><strong>Category:</strong>
+        <%= @tool.category %>
+      </p>
+    </div>
+    <div class="col-12 col-lg-2">
+      <div class="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column">
+        <h2 class="h4 mb-3">¥<%= @tool.price %> / day</h2>
+        <p class="text-muted mb-4">
+          <strong>Location:</strong><br>
+          <%= @tool.location %>
+        </p>
         <%= render "rentals/form", tool: @tool, rental: @rental %>
-        <h2 class="card-trip-pricing"><strong>Price: </strong>¥<%= @tool.price %></h2>
-        <p><strong>Location: </strong><%= @tool.location %></p>
       </div>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     </div>
   </div>
 </div>
