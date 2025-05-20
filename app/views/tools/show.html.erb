@@ -13,6 +13,7 @@
       <div class="info-right">
         <div class="button mt-5 mb-3">
           <%= link_to "Reserve", "#", class: "btn btn-gradient" %>
+          <%# <%= render "/tools/form", tool: @tool, rental: @rental %>
         </div>
         <h2 class="card-trip-pricing"><strong>Price: </strong>¥<%= @tool.rental_price %></h2>
         <p><strong>Location: </strong><%= @tool.location %></p>
