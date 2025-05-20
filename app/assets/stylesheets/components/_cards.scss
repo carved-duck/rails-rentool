@@ -6,18 +6,11 @@
   left: 0;
 }
 
-// .fa-trash {
-//   position: absolute;
-//   top: 8px;
-//   right: 8px;
-//   color: $warning;
-// }
-
 .card-trip {
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  position: relative;
+  background: transparent;
+  box-shadow: none !important;
+  border-radius: 0;
 }
 
 .card-trip > img {
@@ -83,8 +76,14 @@
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This helps distribute space */
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
@@ -107,12 +106,12 @@
 
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
 @media (min-width: 1200px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
