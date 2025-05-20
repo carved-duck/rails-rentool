@@ -76,3 +76,5 @@ end
 
 # manually added gems
 gem "ostruct"
+gem "faker"
+gem "open-uri"
