@@ -1,9 +1,10 @@
 <div class="card mb-3 mx-auto" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><%= rental.tool.name %></h5>
+    <p class="card-text">Price/day: ¥<%= rental.tool.price %></p>
+    <p class="card-text">Total Price: ¥<%= rental.total_price %></p>
     <p class="card-text">Start: <%= rental.start_date %></p>
     <p class="card-text">End: <%= rental.end_date %></p>
-    <a href="#" class="btn btn-info">See details</a>
-    <%# <%= link_to "See details", tool_path(rental), class: "btn btn-dark" %>
+    <%= link_to "See details", tool_path(rental.tool), class: "btn btn-info" %>
   </div>
 </div>

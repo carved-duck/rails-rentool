@@ -16,7 +16,6 @@ class RentalsController < ApplicationController
     else
       render "tools/show", status: :unprocessable_entity
     end
-
   end
 
   private
