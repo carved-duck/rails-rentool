@@ -10,5 +10,6 @@
     <%= f.input_field :price, class: "form-control", min: 1, value: 100%>
   </div>
   <%= f.input :photo, as: :file %>
-  <%=  f.button :submit, "Reserve", class: "btn btn-info"%>
+  <%# <%=  f.button :submit, "Create listing", class: "btn btn-info"%>
+  <%= link_to "Create listing",  "/users/dashboard", class: "btn btn-info" %>
 <% end %>
