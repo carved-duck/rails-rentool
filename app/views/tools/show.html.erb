@@ -25,6 +25,11 @@
         <p class="text-muted mb-4">
           <strong>Location:</strong><br>
           <%= @tool.location %>
+          <div style="width: 100%; height: 200px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
         </p>
         <%= render "rentals/form", tool: @tool, rental: @rental %>
       </div>
