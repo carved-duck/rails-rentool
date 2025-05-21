@@ -6,7 +6,12 @@ class Rental < ApplicationRecord
   validates :end_date, presence: true
   validates :status, presence: true
   validates :total_price, presence: true
+
   def num_of_days
-    (end_date - start_date).to_i
+    if end_date && start_date
+      return (end_date - start_date).to_i
+    else
+      return 1
+    end
   end
 end
