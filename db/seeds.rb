@@ -1,4 +1,9 @@
 require 'open-uri'
+require 'set'
+require 'faker'
+
+Faker::Config.locale = 'en'
+
 puts "Cleaning the DB...."
 Tool.destroy_all
 Rental.destroy_all
@@ -11,7 +16,6 @@ User.create!(
     password: "123456"
   )
 19.times do
-  # inside of the seeds, you can use Pet.create! to stop the seeds if it fails
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -31,7 +35,6 @@ tool_names = [
 
 tool_categories = ["power tools", "hand tools", "kitchen tools", "yard tools"]
 
-# **IMPORTANT:** Replace these with your actual image URLs
 tool_image_urls = [
   "https://images.unsplash.com/photo-1622044939413-0b829c342434?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29yZGxlc3MlMjBkcmlsbHxlbnwwfHwwfHx8MA%3D%3D",
   "https://images.unsplash.com/photo-1617571607645-dd7dd3bf7f6b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2lyY3VsYXIlMjBzYXd8ZW58MHx8MHx8fDA%3D",
@@ -55,12 +58,48 @@ tool_image_urls = [
   "https://plus.unsplash.com/premium_photo-1678725713380-de0bd802d9f2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHNoZWFyc3xlbnwwfHwwfHx8MA%3D%3D"
 ]
 
+# --- HARDCODED RESIDENTIAL-STYLE TOKYO LOCATIONS ---
+# These are examples of addresses in various residential or mixed-use wards.
+# They are *not* specific real residential addresses of individuals.
+tokyo_residential_locations = [
+  "東京都世田谷区桜新町2丁目23-1",   # Sakurashinmachi, Setagaya
+  "東京都杉並区高円寺南3丁目23-14",   # Koenji-Minami, Suginami
+  "東京都目黒区自由が丘1丁目29-1",    # Jiyugaoka, Meguro
+  "東京都練馬区練馬1丁目1-10",       # Nerima, Nerima
+  "東京都大田区蒲田5丁目20-20",      # Kamata, Ota
+  "東京都板橋区常盤台4丁目18-2",     # Tokiwadai, Itabashi
+  "東京都足立区千住3丁目30-1",       # Senju, Adachi
+  "東京都江戸川区西葛西6丁目7-1",     # Nishi-Kasai, Edogawa
+  "東京都葛飾区亀有3丁目25-1",       # Kameari, Katsushika
+  "東京都江東区門前仲町1丁目13-1",   # Monzen-Nakacho, Koto
+  "東京都品川区大崎1丁目11-1",       # Osaki, Shinagawa
+  "東京都渋谷区恵比寿1丁目8-1",      # Ebisu, Shibuya
+  "東京都新宿区高田馬場1丁目25-1",   # Takadanobaba, Shinjuku
+  "東京都中野区中野5丁目52-15",      # Nakano, Nakano
+  "東京都豊島区南池袋1丁目28-1",     # Minami-Ikebukuro, Toshima
+  "東京都文京区本郷5丁目28-1",       # Hongo, Bunkyo
+  "東京都千代田区神田駿河台2丁目1",   # Kanda-Surugadai, Chiyoda
+  "東京都中央区日本橋2丁目4-1",      # Nihonbashi, Chuo (more commercial, but common for apartments)
+  "東京都台東区浅草橋1丁目22-1",     # Asakusabashi, Taito
+  "東京都港区麻布十番2丁目3-1",      # Azabu-Juban, Minato (more upscale residential)
+]
+
+# Shuffle the locations once to assign them randomly to users
+shuffled_tokyo_locations = tokyo_residential_locations.shuffle
+
+users_with_locations = {} # To store which location is assigned to which user
+User.all.each_with_index do |user, index|
+  user_location = shuffled_tokyo_locations[index % shuffled_tokyo_locations.length]
+  users_with_locations[user.id] = user_location
+end
+
 User.all.each do |user|
-  num_tools = rand(1..5) # Generate a random number of tools for the current user
-  puts "Creating #{num_tools} tools for user #{user.id}"
+  user_assigned_location = users_with_locations[user.id]
+  num_tools = rand(1..5)
+  puts "Creating #{num_tools} tools for user #{user.id} at #{user_assigned_location}"
 
   num_tools.times do |i|
-    tool_index = (user.id + i) % tool_names.length # Distribute tools somewhat evenly
+    tool_index = (user.id + i) % tool_names.length
     name = tool_names[tool_index]
     category = tool_categories[tool_index % tool_categories.length].downcase
 
@@ -68,13 +107,12 @@ User.all.each do |user|
       name: name,
       description: Faker::Lorem.paragraph(sentence_count: 3),
       condition: ["good", "fair", "excellent"].sample,
-      location: Faker::Address.city,
+      location: user_assigned_location,
       price: rand(1000..5000),
       category: category,
       user: user
     )
 
-    # Attach the photo if a URL is available for this tool
     if tool_image_urls[tool_index].present?
       begin
         file = URI.open(tool_image_urls[tool_index])
@@ -98,14 +136,23 @@ puts "... created #{Tool.count} tools in total."
 
 puts "Creating rentals...."
 User.all.each do |user|
-  # inside of the seeds, you can use Pet.create! to stop the seeds if it fails
-  Rental.create!(
-    start_date: Faker::Date.backward(days: 3),
-    end_date: Faker::Date.forward(days: 10),
-    status: "pending",
-    total_price: 3000,
-    user: user,
-    tool: Tool.where.not(user: user).sample
-  )
+  if user.tools.any?
+    available_tools = Tool.where.not(user: user).order('RANDOM()')
+
+    if available_tools.any?
+      Rental.create!(
+        start_date: Faker::Date.backward(days: 3),
+        end_date: Faker::Date.forward(days: 10),
+        status: ["pending", "accepted", "declined"].sample,
+        total_price: rand(1000..10000),
+        user: user,
+        tool: available_tools.first
+      )
+    else
+      puts "  No available tools for user #{user.id} to rent from others."
+    end
+  else
+    puts "  Skipping rental for user #{user.id} as they have no tools."
+  end
 end
 puts "... created #{Rental.count} rentals."
