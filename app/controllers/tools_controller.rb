@@ -2,6 +2,12 @@ class ToolsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show]
   def index
     @tools = Tool.all
+    @markers = @tools.geocoded.map do |tool|
+      {
+        lat: tool.latitude,
+        lng: tool.longitude
+      }
+    end
   end
 
   def show
