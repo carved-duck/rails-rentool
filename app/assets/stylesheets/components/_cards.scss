@@ -86,6 +86,11 @@
   justify-content: space-between; /* This helps distribute space */
 }
 
+.card-status {
+  overflow: auto;
+  border-radius: 4px;
+}
+
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
     grid-template-columns: 1fr;
