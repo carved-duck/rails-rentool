@@ -6,8 +6,8 @@
   <%= f.label "Price Per Day" %>
   <div class="input-group mb-3">
     <span class="input-group-text">¥</span>
-    <%= f.input_field :rental_price, class: "form-control", min: 1, value: 100%>
+    <%= f.input_field :price, class: "form-control", min: 1, value: 100%>
   </div>
   <%= f.input :photos, as: :file %>
-  <%=  f.button :submit, "Reserve", class: "btn btn-gradient"%>
-<% end %>
+  <%= f.button :submit, "Reserve", class: "btn btn-gradient"%>
+  <% end %>
