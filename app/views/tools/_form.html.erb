@@ -2,6 +2,7 @@
   <%= f.input :name %>
   <%= f.input :category, collection: ["Power Tools", "Hand Tools", "Kitchen Tools", "Yard Tools"], default: "Power Tools" %>
   <%= f.input :description %>
+  <%= f.input :location %>
   <%= f.input :condition, collection: ["Excellent", "Good", "Fair"], default: "Excellent" %>
   <%= f.label "Price Per Day" %>
   <div class="input-group mb-3">

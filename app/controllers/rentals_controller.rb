@@ -11,8 +11,7 @@ class RentalsController < ApplicationController
 
     @rental.total_price = @tool.price * @rental.num_of_days
     if @rental.save
-      #to do: redirect to dashboard
-      redirect_to tool_path(@rental.tool)
+      redirect_to dashboard_path
     else
       render "tools/show", status: :unprocessable_entity
     end
@@ -21,6 +20,6 @@ class RentalsController < ApplicationController
   private
 
   def rental_params
-    params.require(:rental).permit(:start_date)
+    params.require(:rental).permit(:start_date, :end_date)
   end
 end

@@ -6,11 +6,11 @@
       <li class="breadcrumb-item active" aria-current="page"><%= @tool.name %></li>
     </ol>
   </nav>
-  <div class="row g-4">
-    <div class="col-12 col-lg-6">
-      <%= cl_image_tag @tool.photo.key, class: "img-fluid rounded", alt: @tool.name %>
+  <div class="row col-auto">
+    <div class="col-6 col-lg-3">
+      <%= cl_image_tag @tool.photo.key, height: 800, class: "img-fluid rounded", alt: @tool.name %>
     </div>
-    <div class="col-12 col-lg-4 d-flex flex-column">
+    <div class="col-6 col-lg-3 d-flex flex-column">
       <h1><%= @tool.name %></h1>
       <p class="mb-2"><strong>Condition:</strong>
         <%= @tool.condition.capitalize %>
@@ -19,7 +19,7 @@
         <%= @tool.description %>
       </p>
     </div>
-    <div class="col-12 col-lg-2">
+    <div class="col-12 col-lg-3">
       <div class="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column">
         <h2 class="h4 mb-3">¥<%= @tool.price %> / day</h2>
         <p class="text-muted mb-4">
