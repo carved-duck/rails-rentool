@@ -8,4 +8,5 @@ class Tool < ApplicationRecord
   validates :condition, presence: true
   validates :price, presence: true
   validates :category, presence: true
+  geocoded_by :address
 end
