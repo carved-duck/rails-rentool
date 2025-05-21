@@ -8,5 +8,6 @@ class Tool < ApplicationRecord
   validates :condition, presence: true
   validates :price, presence: true
   validates :category, presence: true
-  geocoded_by :address
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 end
