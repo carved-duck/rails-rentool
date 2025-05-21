@@ -2,7 +2,7 @@
   <div class="row">
     <%# Tools I'm Renting %>
     <div class="card-status col-3">
-      <p class="card-status-title">Tools I've Listed</p>
+      <p class="card-status-title">Tools I'm Renting</p>
       <%# rental %>
       <% @rentals.each do |rental| %>
         <%= render "shared/rental_card", rental: rental %>
@@ -10,7 +10,7 @@
     </div>
     <%# Available %>
     <div class="card-status col-3">
-      <p class="card-status-title">Available</p>
+      <p class="card-status-title">Tools I'm listing</p>
       <%# tool %>
       <% @tools.each do |tool| %>
         <%= render "shared/tool_card", tool: tool %>
@@ -18,7 +18,7 @@
     </div>
     <%# Tools History %>
     <div class="card-status col-3">
-      <p class="card-status-title">Tools History</p>
+      <p class="card-status-title">Tools I Rented</p>
       <%# rental %>
       <% @rentals.each do |rental| %>
         <%= render "shared/rental_card", rental: rental %>
