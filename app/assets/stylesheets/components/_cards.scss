@@ -1,59 +1,62 @@
-// .card-link {
-//   position: absolute;
-//   width: 100%;
-//   top: 0;
-//   bottom: 0;
-//   left: 0;
-// }
+.card-link {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
 
-// .fa-trash {
-//   position: absolute;
-//   top: 8px;
-//   right: 8px;
-//   color: $warning;
-// }
+.card-trip {
+  overflow: hidden;
+  background: transparent;
+  box-shadow: none !important;
+  border-radius: 0;
+}
 
-// .card-trip {
-//   overflow: hidden;
-//   background: white;
-//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-//   position: relative;
-// }
+.card-trip > img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
 
-// .card-trip > img {
-//   height: 400px;
-//   width: 100%;
-//   object-fit: cover;
-// }
+.card-trip h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
 
-// .card-trip h2 {
-//   font-size: 16px;
-//   font-weight: bold;
-//   margin: 0;
-// }
-
-// .card-trip p {
-//   font-size: 12px;
-//   opacity: .7;
-//   margin: 0;
-// }
+.card-trip p {
+  font-size: 16px;
+  opacity: .7;
+  margin: 0;
+}
 
 
-// .card-trip .card-trip-infos {
-//   padding: 16px;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: flex-end;
-//   position: relative;
-// }
+.card-trip .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
 
-// .card-trip-infos .card-trip-user {
-//   position: absolute;
-//   right: 16px;
-//   top: -20px;
-//   width: 40px;
-// }
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
 
+.info-left,
+.info-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-right {
+  margin-left: auto;
+  text-align: right;
+}
 
 .card-category {
   background-size: cover;
@@ -73,8 +76,14 @@
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This helps distribute space */
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
@@ -97,12 +106,12 @@
 
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
 @media (min-width: 1200px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

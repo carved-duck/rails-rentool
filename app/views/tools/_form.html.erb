@@ -1,0 +1,13 @@
+<%= simple_form_for tool do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category, collection: ["Power Tools", "Hand Tools", "Kitchen Tools", "Yard Tools"], default: "Power Tools" %>
+  <%= f.input :description %>
+  <%= f.input :condition, collection: ["Excellent", "Good", "Fair"], default: "Excellent" %>
+  <%= f.label "Price Per Day" %>
+  <div class="input-group mb-3">
+    <span class="input-group-text">¥</span>
+    <%= f.input_field :rental_price, class: "form-control", min: 1, value: 100%>
+  </div>
+  <%= f.input :photos, as: :file %>
+  <%=  f.button :submit, "Reserve", class: "btn btn-gradient"%>
+<% end %>

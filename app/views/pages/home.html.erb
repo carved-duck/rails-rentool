@@ -1,26 +1,25 @@
-<div class="container">
-  <div class="button mt-5 mb-3">
-    <%= link_to "See all listings", "#", class: "btn btn-gradient" %>
-  </div>
-  <h1>Featured Items</h1>
-  <div class="cards mt-5">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      Breakfast
-    </div>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-      Lunch
-    </div>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-      Dinner
-    </div>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      Breakfast
-    </div>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-      Lunch
-    </div>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-      Dinner
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.archpaper.com/wp-content/uploads/2021/02/Installation-view-at-the-Takenaka-Carpentry-Tools-Museum-Kobe-Japan.jpg);">
+  <div class="container">
+    <h1>レンtool</h1>
+    <p class="m-3">Don't buy a tool you only need for a weekend, レンtool it!</p>
+    <div class="button m-3 d-flex justify-content-start">
+      <%= link_to "See all tools", tools_path, class: "btn btn-info" %>
     </div>
   </div>
 </div>
+<div id=home-container class="container my-3">
+  <h1>Featured Items</h1>
+  <div class="cards my-4">
+    <% @tools.sample(4).each do |tool| %>
+      <div class="card" style="width: 20rem; height: 380px; border-radius: 16px">
+        <div class="card-body">
+          <div class="image text-center my-2">
+            <%= cl_image_tag tool.photo.key, height: 165, width: 220, crop: :fill %>
+          </div>
+          <h5 class="card-title"><strong><%= tool.name %></strong></h5>
+          <p class="card-text"><%= tool.description.truncate(65) %> </p>
+          <a href="#"><%= link_to "Details", tool_path(tool), class: "btn btn-info" %> </a>
+        </div>
+      </div>
+    <% end %>
+  </div>

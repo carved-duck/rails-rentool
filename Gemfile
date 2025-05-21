@@ -78,3 +78,4 @@ end
 gem "ostruct"
 gem "faker"
 gem "open-uri"
+gem "cloudinary"
