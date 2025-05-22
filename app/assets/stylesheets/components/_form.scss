@@ -1,0 +1,19 @@
+// radio button
+.inline {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.form-check-input:checked {
+  background-color: #ffc65a;
+  border-color: #f7b53b;
+}
+
+.form-check-input {
+  margin-right: 5px;
+}
+
+// category
+.form-check-label {
+  margin-right: 10px;
+}
