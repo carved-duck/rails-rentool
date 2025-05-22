@@ -14,3 +14,12 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+// .hover-bold:hover {
+//   font-weight: 600;
+// }
+
+.text-decoration-none:hover {
+  text-decoration: underline !important;
+  text-decoration-color: #0e0000ef;
+}
