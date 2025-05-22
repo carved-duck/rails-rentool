@@ -8,32 +8,33 @@
     <p class="card-text">Total Price: ¥<%= rental.total_price %></p>
     <p class="card-text">Start: <%= rental.start_date %></p>
     <p class="card-text">End: <%= rental.end_date %></p>
-    <%= link_to "See details", tool_path(rental.tool), class: "btn btn-info" %>
+    <%= link_to "See details", tool_path(rental.tool), class: "btn btn-info mb-3" %>
     <div class="container rentals">
       <div class="rental d-flex align-items-center mb-4">
       </div>
-      <div class="rental-actions">
-        <div class="rental-info">
-          <div class="rental-info-title">
-            <p> Name of renter: <%= rental.user.name %> </p>
-          </div>
-          <div class="rental-info-details">
-            <p> Number of days: <%= rental.num_of_days %> </p>
-          </div>
+      <div class="rental-actions mb-3">
+        <div class="rental-info-title">
+          <p><strong>Name of renter: </strong><%= rental.user.name %> </p>
         </div>
-        <% if rental.pending? %>
-          <%= simple_form_for rental do |f| %>
-            <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-            <%= f.submit 'Accept', class: 'btn btn-info' %>
-          <% end %>
-          <%= simple_form_for rental do |f| %>
-            <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-            <%= f.submit 'Reject', class: 'btn btn-light' %>
-          <% end %>
-        <% else %>
-          <p class='rental-tag'><%= rental.status %></p>
-        <% end %>
+        <div class="rental-info-details">
+          <p><strong>Number of days: </strong><%= rental.num_of_days %> </p>
+        </div>
       </div>
+      <% if rental.pending? && rental.tool.user == current_user %>
+        <%= simple_form_for rental, url: tool_rental_path(rental.tool, rental), method: :patch do |f|  %>
+          <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+          <%= f.submit 'Accept', class: 'btn btn-info' %>
+        <% end %>
+        <%= simple_form_for rental, url: tool_rental_path(rental.tool, rental), method: :patch do |f| %>
+          <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+          <%= f.submit 'Reject', class: 'btn btn-light' %>
+        <% end %>
+      <% else %>
+        <span class="badge bg-secondary text-capitalize">
+          <%= rental.status %>
+        </span>
+      <% end %>
     </div>
   </div>
+</div>
 </div>

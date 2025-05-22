@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :tools, only: [:index, :new, :create, :show] do
-    resources :rentals, only: [:create]
+    resources :rentals, only: [:create, :update]
   end
   resources :rentals, only: [:update]
   get 'users/dashboard', to: 'users#dashboard', as: :dashboard
