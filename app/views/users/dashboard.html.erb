@@ -7,60 +7,30 @@
     <div class="col-auto">
       <ul class="nav nav-pills flex-column" id="dashboardTabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active"
-                  id="tools-listing-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#tools-listing"
-                  type="button"
-                  role="tab"
-                  aria-controls="tools-listing"
-                  aria-selected="true">
+          <button class="nav-link active" id="tools-listing-tab" data-bs-toggle="pill" data-bs-target="#tools-listing"
+            type="button" role="tab" aria-controls="tools-listing" aria-selected="true">
             Tools I'm Listing
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link"
-                  id="tools-renting-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#tools-renting"
-                  type="button"
-                  role="tab"
-                  aria-controls="tools-renting"
-                  aria-selected="false">
-            Tools To Approve
+          <button class="nav-link" id="tools-renting-tab" data-bs-toggle="pill" data-bs-target="#tools-renting"
+            type="button" role="tab" aria-controls="tools-renting" aria-selected="false">
+            Tools I'm Renting
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link"
-                  id="tools-rented-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#tools-rented"
-                  type="button"
-                  role="tab"
-                  aria-controls="tools-rented"
-                  aria-selected="false">
+          <button class="nav-link" id="tools-rented-tab" data-bs-toggle="pill" data-bs-target="#tools-rented"
+            type="button" role="tab" aria-controls="tools-rented" aria-selected="false">
             Tools I Rented
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link"
-                  id="tools-returning-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#tools-returning"
-                  type="button"
-                  role="tab"
-                  aria-controls="tools-returning"
-                  aria-selected="false">
+          <button class="nav-link" id="tools-returning-tab" data-bs-toggle="pill" data-bs-target="#tools-returning"
+            type="button" role="tab" aria-controls="tools-returning" aria-selected="false">
             Waiting for Return
             <li class="nav-item" role="presentation">
-              <button class="nav-link"
-                  id="tools-returning-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#tools-returning"
-                  type="button"
-                  role="tab"
-                  aria-controls="tools-returning"
-                  aria-selected="false">
+              <button class="nav-link" id="tools-returning-tab" data-bs-toggle="pill" data-bs-target="#tools-returning"
+                type="button" role="tab" aria-controls="tools-returning" aria-selected="false">
                 Waiting for Approval
               </button>
             </li>
@@ -112,21 +82,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <%# Tools History %>
-    <div class="card-status col-3">
-      <p class="card-status-title">Tools I Rented</p>
-      <%# rental %>
-      <% @rentals.each do |rental| %>
-        <%= render "shared/rental_card", rental: rental %>
-      <% end %>      </div>
-    <%# Waiting For Return %>
-    <div class="card-status col-3">
-      <p class="card-status-title">Waiting For Return</p>
-      <%# rental as owner %>
-      <% @rentals_as_owner.each do |rental| %>
-        <%= render "shared/rental_card", rental: rental %>
-      <% end %>
     </div>
   </div>
 </div>
