@@ -1,19 +1,35 @@
-<div class="search d-flex justify-content-center">
-  <div class="index-title d-flex ">
-    <h1 class="my-4" style="font-size: 32px">What's in the shed?</h1>
-  </div>
-  <div class="search-bar m-4 mx-5">
-    <%= form_with url: tools_path, method: :get, data: { turbo_stream: true }, class: "d-flex" do %>
-      <%= text_field_tag :query,
+<div class="container my-1">
+  <div class="search d-flex justify-content-center">
+    <div class="index-title d-flex ">
+      <h1 class="my-4" style="font-size: 32px">What's in the shed?</h1>
+    </div>
+    <div class="search-bar m-4 mx-5">
+      <%= form_with url: tools_path, method: :get, data: { turbo_stream: true }, class: "d-flex" do %>
+        <%= text_field_tag :query,
             params[:query],
             class: "form-control",
             placeholder: "Search...",
             onkeyup: "this.form.querySelector('input[type=submit]').click()"
         %>
-      <%= submit_tag "レンtool", name: "", class: "btn btn-outline-success mx-2" %>
-    <% end %>
+        <%= submit_tag "レンtool", name: "", class: "btn btn-outline-success mx-2" %>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="container">
-  <%= render "tools/list", tools: @tools, markers: @markers %>
+  <!-- Split Page -->
+  <div class="container-fluid">
+    <div class="row" style="height: 80vh;">
+      <!-- Cards column -->
+      <div class="col-md-6 overflow-auto" style="width: 50%;">
+        <%= render "tools/list", tools: @tools, markers: @markers %>
+      </div>
+      <!-- Map column -->
+      <div class="col-md-6 p-0" style="border-radius: 16%">
+        <div class="right-half col-4 rounded shadow-sm" style="width: 80%; height: 100vh;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
