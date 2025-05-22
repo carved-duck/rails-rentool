@@ -1,5 +1,8 @@
 <div class="card mb-3 mx-auto" style="width: 18rem;">
   <div class="card-body">
+    <div class="image text-center my-2">
+      <%= cl_image_tag tool.photo.key, height: 165, width: 220, crop: :fill, alt: tool.name %>
+    </div>
     <h5 class="card-title"><%= tool.name %></h5>
     <p class="card-text">Condition: <%= tool.condition %></p>
     <%= link_to "See details", tool_path(tool), class: "btn btn-info" %>
