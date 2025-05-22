@@ -1,14 +1,14 @@
 <%= simple_form_for tool do |f| %>
   <%= f.input :name %>
-  <%= f.input :category, collection: ["Power Tools", "Hand Tools", "Kitchen Tools", "Yard Tools"], default: "Power Tools" %>
+  <%= f.input :category, as: :radio_buttons, collection: ["Power Tools", "Hand Tools", "Kitchen Tools", "Yard Tools"], selected: "Power Tools", item_wrapper_class: 'inline' %>
   <%= f.input :description %>
   <%= f.input :location %>
-  <%= f.input :condition, collection: ["Excellent", "Good", "Fair"], default: "Excellent" %>
-  <%= f.label "Price Per Day" %>
+  <%= f.input :condition, as: :radio_buttons, collection: ["Excellent", "Good", "Fair"], default: "Excellent", item_wrapper_class: 'inline'%>
+  <%= f.label "Price Per Day", class: "mb-2" %>
   <div class="input-group mb-3">
     <span class="input-group-text">¥</span>
     <%= f.input_field :price, class: "form-control", min: 1, value: 100%>
   </div>
   <%= f.input :photo, as: :file %>
-  <%= f.submit "Create listing", class: "btn btn-info" %>
+  <%= link_to "Create listing",  "/users/dashboard", class: "btn btn-info my-4" %>
 <% end %>
