@@ -1,0 +1,32 @@
+<div id="tools">
+  <% if tools.any? %>
+    <div class="col-2 col-lg-6 m-2">
+      <div class="m-2">
+        <div class="cards my-4">
+          <% tools.each do |tool| %>
+            <div class="card" style="width: 20rem; height: 380px; border-radius: 16px">
+              <div class="card-body">
+                <div class="image text-center my-2">
+                  <%= cl_image_tag tool.photo.key, height: 165, width: 220, crop: :fill %>
+                </div>
+                <h5 class="card-title"><strong><%= tool.name %></strong></h5>
+                <p class="card-text"><%= tool.description.truncate(65) %> </p>
+                <a href="#"><%= link_to "Details", tool_path(tool), class: "btn btn-info" %></a>
+              </div>
+            </div>
+          <% end %>
+          <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="d-flex align-items-center my-5" style="flex-direction: column">
+      <h3>Oops, no tools match your search.</h3>
+      <h5>Enter another one.</h5>
+    </div>
+  <% end%>
+</div>
