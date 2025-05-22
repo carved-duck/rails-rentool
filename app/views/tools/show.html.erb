@@ -15,13 +15,14 @@
       <p class="mb-2"><strong>Condition:</strong>
         <%= @tool.condition.capitalize %>
       </p>
+      <p> <strong>Tool Owner:</strong> <%= @tool.user.name %> </p>
       <p class="mb-2"><strong>Description:</strong>
         <%= @tool.description %>
       </p>
     </div>
     <div class="col-12 col-lg-3">
       <div class="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column">
-        <h2 class="h4 mb-3">¥<%= @tool.price %> / day</h2>
+        <h2 class="h4 mb-3" data-daily-price="<%= @tool.price %>">¥<%= @tool.price %> / day</h2>
         <p class="text-muted mb-4">
           <strong>Location:</strong><br>
           <%= @tool.location %>
@@ -32,6 +33,9 @@
           </div>
         </p>
         <%= render "rentals/form", tool: @tool, rental: @rental %>
+        <div style="margin-top: 10px; font-weight: bold;">
+          Total Price: <span id="calculated-price-display"></span>
+        </div>
       </div>
     </div>
   </div>
