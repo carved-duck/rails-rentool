@@ -21,7 +21,7 @@ class RentalsController < ApplicationController
     @rental = Rental.find(params[:id])
       if @rental.update(rental_params)
         # redirect_to # up to you...
-        redirect_to dashboard_path
+        redirect_to dashboard_path, notice: "Rental updated!"
       else
         # render # where was the rental update form?
         render "tools/show", status: :unprocessable_entity
