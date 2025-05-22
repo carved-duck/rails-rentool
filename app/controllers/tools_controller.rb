@@ -1,7 +1,12 @@
 class ToolsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show]
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
-    @tools = Tool.all
+    @tools =
+      if params[:query].present?
+        Tool.search(params[:query])
+      else
+        Tool.all
+      end
     @markers = @tools.geocoded.map do |tool|
       {
         lat: tool.latitude,
@@ -9,6 +14,18 @@ class ToolsController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {tool: tool}),
         marker_html: render_to_string(partial: "marker", locals: {tool: tool})
       }
+    end
+    respond_to do |format|
+      format.html
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "tools",
+          partial: 'tools/list', locals: {
+            tools: @tools,
+            markers: @markers
+          }
+        )
+      end
     end
   end
 
