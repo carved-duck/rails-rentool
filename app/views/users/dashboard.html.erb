@@ -1,36 +1,115 @@
-<div class="card-status-wrapper">
-  <div class="row">
-    <%# Tools I'm Renting %>
-    <div class="card-status col-3">
-      <p class="card-status-title">Tools I'm Renting</p>
-      <%# rental %>
-      <% @rentals.each do |rental| %>
-        <%= render "shared/rental_card", rental: rental %>
-      <% end %>
-    </div>
-    <%# Available %>
-    <div class="card-status col-3">
-      <p class="card-status-title">Tools I'm listing</p>
-      <%# tool %>
-      <% @tools.each do |tool| %>
-        <%= render "shared/tool_card", tool: tool %>
-      <% end %>
-    </div>
-    <%# Tools History %>
-    <div class="card-status col-3">
-      <p class="card-status-title">Tools I Rented</p>
-      <%# rental %>
-      <% @rentals.each do |rental| %>
-        <%= render "shared/rental_card", rental: rental %>
-      <% end %>      </div>
-    <%# Waiting For Return %>
-    <div class="card-status col-3">
-      <p class="card-status-title">Waiting For Return</p>
-      <%# rental as owner %>
-      <% @rentals_as_owner.each do |rental| %>
-        <%= render "shared/rental_card", rental: rental %>
-      <% end %>
-    </div>
+<div class="container my-5">
+  <div class="title mb-4">
+    <h1>My レンtool</h1>
   </div>
-</div>
-</div>
+  <div class="row">
+    <!-- LEFT -->
+    <div class="col-auto">
+      <ul class="nav nav-pills flex-column" id="dashboardTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active"
+                  id="tools-listing-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#tools-listing"
+                  type="button"
+                  role="tab"
+                  aria-controls="tools-listing"
+                  aria-selected="true">
+            Tools I'm Listing
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link"
+                  id="tools-renting-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#tools-renting"
+                  type="button"
+                  role="tab"
+                  aria-controls="tools-renting"
+                  aria-selected="false">
+            Tools To Approve
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link"
+                  id="tools-rented-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#tools-rented"
+                  type="button"
+                  role="tab"
+                  aria-controls="tools-rented"
+                  aria-selected="false">
+            Tools I Rented
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link"
+                  id="tools-returning-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#tools-returning"
+                  type="button"
+                  role="tab"
+                  aria-controls="tools-returning"
+                  aria-selected="false">
+            Waiting for Return
+            <li class="nav-item" role="presentation">
+              <button class="nav-link"
+                  id="tools-returning-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#tools-returning"
+                  type="button"
+                  role="tab"
+                  aria-controls="tools-returning"
+                  aria-selected="false">
+                Waiting for Approval
+              </button>
+            </li>
+          </ul>
+        </div>
+        <!-- RIGHT: tab panes -->
+        <div class="col">
+          <div class="tab-content" id="dashboardTabsContent">
+            <!-- Tools I'm Listing -->
+            <div class="tab-pane fade show active" id="tools-listing" role="tabpanel" aria-labelledby="tools-listing-tab">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+                <% @tools.each do |tool| %>
+                  <div class="col-12 col-sm-6 col-lg-4">
+                    <%= render "shared/tool_card", tool: tool %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <!-- Tools To Approve -->
+            <div class="tab-pane fade" id="tools-renting" role="tabpanel" aria-labelledby="tools-renting-tab">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+                <% @rentals_as_owner.each do |rental| %>
+                  <div class="col-12 col-sm-6 col-lg-4">
+                    <%= render "shared/rental_card", rental: rental %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <!-- Tools I Rented -->
+            <div class="tab-pane fade" id="tools-rented" role="tabpanel" aria-labelledby="tools-rented-tab">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+                <% @rentals.each do |rental| %>
+                  <div class="col-12 col-sm-6 col-lg-4">
+                    <%= render "shared/rental_card", rental: rental %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <!-- Waiting For Return -->
+            <div class="tab-pane fade" id="tools-returning" role="tabpanel" aria-labelledby="tools-returning-tab">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+                <% @rentals_as_owner.each do |rental| %>
+                  <div class="col-12 col-sm-6 col-lg-4">
+                    <%= render "shared/rental_card", rental: rental %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

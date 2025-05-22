@@ -1,0 +1,9 @@
+.nav-pills .nav-link.active {
+  background-color: var(--bs-info);
+  color: var(--bs-black) !important;
+  border-color: var(--bs-info);
+}
+
+.nav-link {
+  color: var(--bs-nav-link-black);
+}
