@@ -17,9 +17,20 @@ class RentalsController < ApplicationController
     end
   end
 
+  def update
+    @rental = Rental.find(params[:id])
+      if @rental.update(rental_params)
+        # redirect_to # up to you...
+        redirect_to dashboard_path
+      else
+        # render # where was the rental update form?
+        render "tools/show", status: :unprocessable_entity
+      end
+  end
+
   private
 
   def rental_params
-    params.require(:rental).permit(:start_date, :end_date)
+    params.require(:rental).permit(:status, :start_date, :end_date)
   end
 end

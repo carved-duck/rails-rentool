@@ -15,7 +15,19 @@ User.create!(
     email: "admin@lewagon.com",
     password: "123456"
   )
-19.times do
+User.create!(
+  name: "renterSan",
+  email: "renter@lewagon.com",
+  password: "123456"
+)
+User.create!(
+  name: "ownerSan",
+  email: "owner@lewagon.com",
+  password: "123456"
+)
+
+
+17.times do
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
