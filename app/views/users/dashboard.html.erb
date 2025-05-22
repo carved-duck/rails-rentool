@@ -33,36 +33,3 @@
     </div>
   </div>
 </div>
-</div>
-<%# this code for approve/reject to be moved somewhere better after %>
-<div class="container rentals">
-  <h2>Rentals waiting for approval</h2>
-  <% @rentals.each do |rental| %>
-    <div class="rental d-flex align-items-center mb-4">
-      <div class="rental-card-wrapper me-3"> <%= render "shared/rental_card", rental: rental %>
-      </div>
-      <div class="rental-actions">
-        <div class="rental-info">
-          <div class="rental-info-title">
-            <p> Name of renter: <%= rental.user.name %> </p>
-          </div>
-          <div class="rental-info-details">
-            <p> Number of days: <%= rental.num_of_days %> </p>
-          </div>
-        </div>
-        <% if rental.pending? %>
-          <%= simple_form_for rental do |f| %>
-            <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-            <%= f.submit 'Accept', class: 'btn btn-info' %>
-          <% end %>
-          <%= simple_form_for rental do |f| %>
-            <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-            <%= f.submit 'Reject', class: 'btn btn-light' %>
-          <% end %>
-        <% else %>
-          <p class='rental-tag'><%= rental.status %></p>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
