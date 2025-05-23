@@ -1,23 +1,51 @@
-<div class="card mb-3 mx-auto" style="width: 18rem;">
+<div class="card mb-0" style="width: 18rem;">
   <div class="card-body">
-    <div class="image text-center my-2">
+    <div class="image text-center my-0">
       <%= cl_image_tag rental.tool.photo.key, height: 165, width: 220, crop: :fill, alt: rental.tool.name %>
     </div>
-    <h5 class="card-title"><%= rental.tool.name %></h5>
-    <p class="card-text">Price/day: ¥<%= rental.tool.price %></p>
-    <p class="card-text">Total Price: ¥<%= rental.total_price %></p>
-    <p class="card-text">Start: <%= rental.start_date %></p>
-    <p class="card-text">End: <%= rental.end_date %></p>
-    <%= link_to "See details", tool_path(rental.tool), class: "btn btn-info mb-3" %>
-    <div class="container rentals">
+    <%# tool name %>
+    <h5 class="card-title mt-3 mb-4 fw-bold"><%= rental.tool.name %></h5>
+    <%# label: display Price and Total Price %>
+    <div class="row mt-1">
+      <div class="col text-start border-bottom border-secondary-subtle d-inline-block">Price / day</div>
+      <div class="col text-start border-bottom border-secondary-subtle">Total Price</div>
+    </div>
+    <%# price %>
+    <div class="row mb-2">
+      <div class="col d-flex align-items-baseline flex-nowrap">
+        <p class="mb-0 mt-2 h5 fw-bold">¥<%= rental.tool.price %></p>
+        <%# <p class="mb-0 ms-1">/ day</p> %>
+      </div>
+      <div class="col text-start">
+        <p class="mb-0 mt-2 h5 fw-bold ps-0">¥<%= rental.total_price %></p>
+      </div>
+    </div>
+    <%# start date %>
+    <p class="card-text mt-3 mb-2 border-bottom border-secondary-subtle">Start:</p>
+    <div class="d-flex align-items-baseline">
+      <p class="mb-0 text-end"><%= rental.start_date %></p>
+    </div>
+    <%# end date %>
+    <p class="card-text mt-3 mb-2 border-bottom border-secondary-subtle">End:</p>
+    <div class="d-flex align-items-baseline">
+      <p class="mb-0"><%= rental.end_date %></p>
+    </div>
+    <%# see details btn %>
+    <%= link_to "See details", tool_path(rental.tool), class: "btn btn-info mt-3 mb-0" %>
+    <%# rentals info %>
+    <div class="container rentals px-0">
       <div class="rental d-flex align-items-center mb-4">
       </div>
       <div class="rental-actions mb-3">
-        <div class="rental-info-title">
-          <p><strong>Name of renter: </strong><%= rental.user.name %> </p>
+        <%# renter name %>
+        <p class="rental-info-title card-text mt-3 mb-2 border-bottom border-secondary-subtle">Name of renter:</p>
+        <div class="d-flex align-items-baseline">
+          <p class="mb-0 text-end"><%= rental.user.name %></p>
         </div>
-        <div class="rental-info-details">
-          <p><strong>Number of days: </strong><%= rental.num_of_days %> </p>
+        <%# number of rental days %>
+        <p class="rental-info-details card-text mt-3 mb-2 border-bottom border-secondary-subtle">Number of days:</p>
+          <div class="d-flex align-items-baseline">
+            <p class="mb-0 text-end"><%= rental.num_of_days %></p>
         </div>
       </div>
       <% if rental.pending? && rental.tool.user == current_user %>
@@ -30,9 +58,17 @@
           <%= f.submit 'Reject', class: 'btn btn-light' %>
         <% end %>
       <% else %>
-        <span class="badge bg-secondary text-capitalize">
-          <%= rental.status %>
-        </span>
+      <%# pending button %>
+      <% if rental.status == "pending" %>
+        <button type="button" class="btn btn-outline-secondary w-100" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <%= rental.status.capitalize %>...
+        </button>
+      <% else %>
+        <button type="button" class="btn btn-success">
+      <%= rental.status.capitalize %>
+        </button>
+      <% end %>
       <% end %>
     </div>
   </div>
