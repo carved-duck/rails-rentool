@@ -1,29 +1,29 @@
-<div id="tools" class="row">
-  <div class="left-half col-4">
-    <% if tools.any? %>
-      <div class="">
-        <div class="m-2">
-          <div class="cards my-4">
-            <% tools.each do |tool| %>
-              <div class="card" style="width: 20rem; height: 380px; border-radius: 16px">
-                <div class="card-body">
-                  <div class="image text-center my-2">
-                    <%= cl_image_tag tool.photo.key, height: 165, width: 220, crop: :fill %>
-                  </div>
-                  <h5 class="card-title"><strong><%= tool.name %></strong></h5>
-                  <p class="card-text"><%= tool.description.truncate(65) %> </p>
-                  <a href="#"><%= link_to "Details", tool_path(tool), class: "btn btn-info" %></a>
+<div class="left-half" id="tools">
+  <% if tools.any? %>
+    <div class="m-2">
+      <div class="cards my-4">
+        <% tools.each do |tool| %>
+          <%= link_to tool_path(tool), style: "text-decoration: none" do %>
+            <div class="card index-card"
+                     style="height: 380px; border-radius: 16px;">
+              <div class="card-body">
+                <div class="image text-center my-2 d-flex justify-content-center">
+                  <%= cl_image_tag tool.photo.key, height: 165, width: 220, style: "border-radius: 8%", crop: :fill %>
                 </div>
+                <h5 class="card-title d-flex justify-content-center py-3"
+                        style="border-top: 1px solid black; border-bottom: 1px solid black"
+                    ><strong><%= tool.name %></strong></h5>
+                <p class="card-text"><%= tool.description.truncate(65) %> </p>
               </div>
-            <% end %>
-          </div>
-        </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-    <% else %>
-      <div class="d-flex align-items-center my-5" style="flex-direction: column">
-        <h3>Oops, no tools match your search.</h3>
-        <h5>Enter another one.</h5>
-      </div>
-    <% end%>
-  </div>
+    </div>
+  <% else %>
+    <div class="d-flex align-items-center my-5" style="flex-direction: column">
+      <h3>Oops, no tools match your search.</h3>
+      <h5>Enter another one.</h5>
+    </div>
+  <% end%>
 </div>
