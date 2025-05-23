@@ -1,9 +1,13 @@
 <div class="card mb-3 mx-auto" style="width: 18rem;">
   <div class="card-body">
     <div class="image text-center my-2">
+    <% if tool.photo.attached? %>
       <%= cl_image_tag tool.photo.key, height: 165, width: 220, crop: :fill, alt: tool.name %>
+    <% else %>
+      <%= image_tag 'https://images.unsplash.com/photo-1611288870280-4a322b8ec7ec?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',height: 165, width: 220 %>
+    <% end %>
     </div>
-    <h5 class="card-title"><%= tool.name %></h5>
+    <h5 class="card-title fw-bold my-2"><%= tool.name %></h5>
     <p class="card-text">Condition: <%= tool.condition %></p>
     <%= link_to "See details", tool_path(tool), class: "btn btn-info" %>
   </div>
