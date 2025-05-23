@@ -1,6 +1,6 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.archpaper.com/wp-content/uploads/2021/02/Installation-view-at-the-Takenaka-Carpentry-Tools-Museum-Kobe-Japan.jpg);">
   <div class="container">
-    <h1>レンtool</h1>
+    <h1 style="font-family: 'Darbots', sans-serif">レンtool</h1>
     <p class="m-3">Don't buy a tool you only need for a weekend, レンtool it!</p>
     <div class="button m-3 d-flex justify-content-start">
       <%= link_to "See all tools", tools_path, class: "btn btn-info" %>
@@ -9,9 +9,9 @@
 </div>
 <div id=home-container class="container my-3">
   <h1>Featured Items</h1>
-  <div class="cards my-4">
+  <div class="cards my-4 d-flex">
     <% @tools.sample(4).each do |tool| %>
-      <div class="card" style="width: 20rem; height: 380px; border-radius: 16px">
+      <div class="card me-3 mb-3" style="width: 20rem; height: 380px">
         <div class="card-body">
           <div class="image text-center my-2">
             <%= cl_image_tag tool.photo.key, height: 165, width: 220, crop: :fill %>

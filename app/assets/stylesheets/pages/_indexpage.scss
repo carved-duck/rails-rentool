@@ -1,0 +1,14 @@
+// .left-half {
+//   width: 50%;
+// }
+
+// .right-half {
+//   width: 50%;
+// }
+
+.index-card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .4);
+  }
+}
