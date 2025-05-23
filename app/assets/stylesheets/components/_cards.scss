@@ -81,10 +81,14 @@
   grid-gap: 16px;
 }
 
+.card{
+  border-radius: 16px;
+}
+
 .card-body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* This helps distribute space */
+  justify-content: space-between;
 }
 
 .card-status {

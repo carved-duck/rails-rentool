@@ -1,4 +1,4 @@
-<div class="container my-5">
+<div class="container my-5" id="show-outer-box">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item text-decoration-none"><%= link_to "Tools", tools_path, class: "text-decoration-none text-dark" %></li>
@@ -6,38 +6,42 @@
       <li class="breadcrumb-item active" aria-current="page"><%= @tool.name %></li>
     </ol>
   </nav>
-
-  <div class="row gap-0">
-    <div class="col">
-      <%= cl_image_tag @tool.photo.key, height: 800, class: "img-fluid rounded", alt: @tool.name %>
+  <div class="row gap-5">
+    <div class="col-6 pe-0 mx-4 image-overlay-container" >
+      <%= cl_image_tag @tool.photo.key, class: "img-fluid rounded", id: "tool-image", alt: @tool.name %>
+      <h1 class="tool-overlay-title mb-3"><%= @tool.name %></h1>
     </div>
-    <div class="col-6 d-flex flex-column">
-      <h1 class="text-start mb-3"><%= @tool.name %></h1>
-      <p class="mb-2"><strong>Condition:</strong>
-        <%= @tool.condition.capitalize %>
-      </p>
-      <p> <strong>Tool Owner:</strong> <%= @tool.user.name %> </p>
-      <p class="mb-2"><strong>Description:</strong>
-        <%= @tool.description %>
-      </p>
-    </div>
-    <div class="col-3 ps-0">
-      <div class="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column">
+    <div class="col-5 ps-0">
+      <div class="p-4 bg-light shadow-sm h-100 d-flex flex-column overflow-hidden" id="right-card">
         <h2 class="h4 mb-3" data-daily-price="<%= @tool.price %>">¥<%= @tool.price %> / day</h2>
-        <p class="text-muted mb-4">
-          <strong>Location:</strong><br>
+        <p class="text-muted mb-2 pt-2"> <i class="fa-solid fa-location-dot"></i>
           <%= @tool.location %>
-          <div style="width: 100%; height: 200px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
         </p>
+        <div id="map" style="width: 100%; height: 280px; margin-bottom: 10px;" data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
         <%= render "rentals/form", tool: @tool, rental: @rental %>
         <div style="margin-top: 10px; font-weight: bold;">
           Total Price: <span id="calculated-price-display"></span>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-12 mx-3">
+      <h3 class="mb-3">About this tool</h3>
+      <p><%= @tool.description %></p>
+    </div>
+  </div>
+  <div class="row mt-4 p-3" id="tool-details-bottom">
+    <div class="col-md-6 text-center"> <i class="fa-solid fa-circle-check"></i>
+      <p class="mb-0">
+        <%= @tool.condition.capitalize %></p>
+    </div>
+    <div class="col-md-6 text-center"> <i class="fa-solid fa-store"></i>
+      <p class="mb-0">
+        <%= @tool.user.name %></p>
     </div>
   </div>
 </div>

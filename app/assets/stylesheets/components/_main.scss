@@ -1,0 +1,38 @@
+.main-banner {
+  padding: 60px 0;
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    url("https://as2.ftcdn.net/jpg/01/58/21/39/1000_F_158213963_pzZL2S11s7k6PkDkU8hpEUD8FmDEy78e.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.main-banner .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+}
+
+.main-panel {
+  position: relative;
+  background: rgba(255,255,255,0.95);
+  padding: 29px;
+  border-radius: 16px;
+  width: 586px;
+  margin-left: 165px;
+}
+
+.main-panel h2 {
+  margin: 0;
+  font-size: 30px;
+  text-align: center;
+}
+
+.main-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
