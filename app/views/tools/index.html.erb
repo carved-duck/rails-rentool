@@ -27,7 +27,7 @@
     <!-- Map column -->
     <%# <div class="col-md-6 p-4 pt-4" style="position: sticky;"> %>
     <div class="col-md-6">
-      <div class="right-half rounded shadow-sm my-4" style="height: 100vh; width: 100%; position: sticky; top: 0; border-radius: 16%"
+      <div class="right-half my-4" style="height: 100vh; width: 100%; position: sticky; top: 0;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
