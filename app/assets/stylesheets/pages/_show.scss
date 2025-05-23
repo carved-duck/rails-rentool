@@ -1,0 +1,88 @@
+/* Container for the image and the overlaid title */
+.image-overlay-container {
+  position: relative; /* This is the "relative" part. It sets the positioning context. */
+  display: flex; /* Use flexbox to help center the title */
+  align-items: center; /* Vertically center the title */
+  justify-content: center; /* Horizontally center the title */
+  /* You may need to set a height here or on the image */
+  height: 600px; /* Make this match the image height you want */
+  overflow: hidden; /* To prevent title overflow */
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* The title that overlays the image */
+.tool-overlay-title {
+  position: absolute; /* This is the "absolute" part. It's positioned relative to its parent. */
+  bottom: 20px; /* Adjust distance from the bottom */
+  left: 50%; /* Start from the horizontal center */
+  transform: translateX(-50%); /* Move back by half its width to truly center it */
+  color: white; /* Make the text white */
+  background-color: rgba(110, 110, 110, 0.5); /* Semi-transparent background */
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 2.5rem; /* Adjust font size */
+  z-index: 10; /* Ensure it's above the image */
+  width: 90%; /* Control width if needed */
+}
+
+/* Your existing image styling for #tool-image (or adjust as needed) */
+#tool-image {
+  // width: 100%;
+  // height: 600px; /* Make sure this matches the container height */
+  width: 100%;    /* Make sure the image takes up the full width of its container */
+  height: 100%;   /* Ensure aspect ratio is maintained */
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+}
+
+#show-outer-box {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  padding: 44px;
+  margin-top: 0px;
+}
+
+/* In app/assets/stylesheets/application.scss or a dedicated CSS file */
+
+#tool-details-bottom {
+  display: flex; /* Enables Flexbox for alignment */
+  justify-content: space-around; /* Distributes items evenly with space around them */
+  align-items: flex-start; /* Aligns items to the start of the cross-axis (top) */
+  background-color: #f8f9fa; /* A light grey background to make it stand out */
+  border: 1px solid #e9ecef; /* A subtle border */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* A very subtle shadow */
+  border-radius: 16px;
+  margin: 0px;
+}
+
+#tool-details-bottom > div {
+  text-align: center; /* Center the text and icons within each column */
+  padding: 10px; /* Add some padding inside each detail column */
+  flex-grow: 1; /* Allow columns to grow and take available space */
+}
+
+#tool-details-bottom i {
+  font-size: 1.5rem; /* Make the icons a bit larger */
+  margin-bottom: 8px; /* Add some space between the icon and the text */
+  color: #333; /* A nice blue color for the icons (adjust as needed) */
+  display: block; /* Ensures the icon takes its own line for better vertical spacing */
+}
+
+#right-card {
+  border: 1px solid #e9ecef; /* A subtle border */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* A very subtle shadow */
+  border-radius: 16px;
+}
+
+#map {
+  border: 1px solid #e9ecef; /* A subtle border */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* A very subtle shadow */
+  border-radius: 16px;
+}
