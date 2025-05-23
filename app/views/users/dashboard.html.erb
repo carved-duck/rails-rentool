@@ -1,4 +1,4 @@
-<div class="dashboard container my-5">
+<div class="dashboard container my-3 mx-3">
   <div class="title mb-4">
     <h1>My レンtool</h1>
   </div>
@@ -43,9 +43,9 @@
       <div class="tab-content" id="dashboardTabsContent">
         <!-- Tools I'm Listing -->
         <div class="tab-pane fade show active" id="tools-listing" role="tabpanel" aria-labelledby="tools-listing-tab">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+          <div class="row g-1">
             <% @tools.each do |tool| %>
-              <div class="col-12 col-sm-6 col-lg-4">
+              <div class="col-3">
                 <%= render "shared/tool_card", tool: tool %>
               </div>
             <% end %>
@@ -53,9 +53,9 @@
         </div>
         <!-- Tools I'm Renting -->
         <div class="tab-pane fade" id="tools-renting" role="tabpanel" aria-labelledby="tools-renting-tab">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+          <div class="row g-1">
             <% @my_pending.each do |rental| %>
-              <div class="col-12 col-sm-6 col-lg-4">
+              <div class="col-3">
                 <%= render "shared/rental_card", rental: rental %>
               </div>
             <% end %>
@@ -63,9 +63,9 @@
         </div>
         <!-- Tools I Rented -->
         <div class="tab-pane fade" id="tools-rented" role="tabpanel" aria-labelledby="tools-rented-tab">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+          <div class="row g-1">
             <% @my_accepted.each do |rental| %>
-              <div class="col-12 col-sm-6 col-lg-4">
+              <div class="col-3">
                 <%= render "shared/rental_card", rental: rental %>
               </div>
             <% end %>
@@ -73,18 +73,18 @@
         </div>
         <!-- Waiting For Return -->
         <div class="tab-pane fade" id="tools-returning" role="tabpanel" aria-labelledby="tools-returning-tab">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+          <div class="row g-1">
             <% @waiting_for_return.each do |rental| %>
-              <div class="col-12 col-sm-6 col-lg-4">
+              <div class="col-3">
                 <%= render "shared/rental_card", rental: rental %>
               </div>
             <% end %>
           </div>
         </div>
         <div class="tab-pane fade" id="tools-approval" role="tabpanel" aria-labelledby="tools-approval-tab">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+          <div class="row g-1">
             <% @pending_approvals.each do |rental| %>
-              <div class="col-12 col-sm-6 col-lg-4">
+              <div class="col-3">
                 <%= render "shared/rental_card", rental: rental %>
               </div>
             <% end %>
