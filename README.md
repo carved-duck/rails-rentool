@@ -1,6 +1,6 @@
 # 📚 レンtool
 
-A simple website we created based off of Airbnb. Here you can both rent and rent out tools to users. 
+A simple website based off of Airbnb. Here you can both rent and rent out tools to users. 
 <br>
 
 <br>
